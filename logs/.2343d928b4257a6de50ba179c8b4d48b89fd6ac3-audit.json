@@ -1,0 +1,45 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "logs\\.2343d928b4257a6de50ba179c8b4d48b89fd6ac3-audit.json",
+    "files": [
+        {
+            "date": 1721149425669,
+            "name": "logs\\woowow-backend-2024-07-16.log",
+            "hash": "9c041992936b175bcd2de07b43d5fe6441c1619f05840a45391c87e9c3574821"
+        },
+        {
+            "date": 1721203677138,
+            "name": "logs\\woowow-backend-2024-07-17.log",
+            "hash": "d074d3bf468cd5770ffc4b32bcb4f35bdd54521347fcec269bb8e8e2ff26be5b"
+        },
+        {
+            "date": 1721619349817,
+            "name": "logs\\woowow-backend-2024-07-21.log",
+            "hash": "dc1cec188e49a1c38ad590ea88e03912f859cfdca41f6b7f277e8d1573928c30"
+        },
+        {
+            "date": 1721655280405,
+            "name": "logs\\woowow-backend-2024-07-22.log",
+            "hash": "439ab68f2269ab54924eec8ff60814d3e465dc6065390468f32931c56b10492d"
+        },
+        {
+            "date": 1721719694327,
+            "name": "logs\\woowow-backend-2024-07-23.log",
+            "hash": "391f3e45fcf0a9f48137b9df07ea09388ee595be45b7de9e7950fcd2530cd8bf"
+        },
+        {
+            "date": 1721890368215,
+            "name": "logs\\woowow-backend-2024-07-24.log",
+            "hash": "fefb7a70fedb8cc1fc9055cee82b7d596f852b4cea3caf97730bf005c43a6fb6"
+        },
+        {
+            "date": 1721897616512,
+            "name": "logs\\woowow-backend-2024-07-25.log",
+            "hash": "860efa11f80249b8ba59293b78f06fbd64303dc14cf3700fe357f0beb0568b3c"
+        }
+    ],
+    "hashType": "sha256"
+}
