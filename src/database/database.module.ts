@@ -15,6 +15,8 @@ import {
   TransferSchemaModel,
   TokenTickerSchema,
   TokenTickerSchemaModel,
+  InscribingHistorySchema,
+  InscribingHistorySchemaModel
 } from '@/schemas';
 import * as dotenv from 'dotenv';
 
@@ -74,8 +76,6 @@ const modules = [
       },
       collection: 'transfers',
     },
-
-    //Enthusiast K.G
     {
       name: TokenTickerSchemaModel.name,
       useFactory: () => {
@@ -83,6 +83,14 @@ const modules = [
         return schema;
       },
       collection: 'tokenTickers',
+    },
+    {
+      name: InscribingHistorySchemaModel.name,
+      useFactory: () => {
+        const schema = InscribingHistorySchema;
+        return schema;
+      },
+      collection: 'inscribingHistory',
     },
   ]),
 ];

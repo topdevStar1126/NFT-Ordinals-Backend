@@ -2,8 +2,9 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
 import { TokenTickerSchemaModel } from '@/schemas';
-
 import { TokenTickerDocument } from '@/schemas/tokenTicker.schema';
+import { InscribingHistorySchemaModel } from '@/schemas';
+import { InscribingHistoryDocument } from '@/schemas/inscribingHistory.schema';
 import { Injectable } from '@nestjs/common';
 
 import * as dotenv from 'dotenv';
@@ -11,6 +12,7 @@ import * as session from 'express-session';
 import { InscBrc20TokenDetailDto } from './inscBrc20TokenDetail.dto';
 import { delay } from 'rxjs';
 import { InscBrc20TokenDto } from './inscBrc20Token.dto';
+import { InscribingHistoryDto } from './inscribingHistory.dto';
 
 const https = require('https');
 const crypto = require('crypto');
@@ -195,7 +197,9 @@ export class InscBrc20TokensService {
 
   constructor(
     @InjectModel(TokenTickerSchemaModel.name)
+    @InjectModel(InscribingHistorySchemaModel.name)
     private readonly tokenTickerModel: Model<TokenTickerDocument>,
+    private readonly inscribingHistoryModel: Model<InscribingHistoryDocument>
   ) {}
 
   async findAll_tokenList(): Promise<InscBrc20TokenDto[]> {
@@ -468,5 +472,28 @@ export class InscBrc20TokensService {
       .exec();
 
     return tokenTickers;
+  }
+
+  async getInscribingHistory(recipientAddress: string): Promise<any> {
+    const regex = new RegExp(recipientAddress, 'i');
+
+    const tokenTickers = await this.inscribingHistoryModel
+      .find({ recipientAddress: { $regex: regex } })
+      .limit(30)
+      .exec();
+
+    return tokenTickers;
+  }
+  async createInscribingHistory(createItemDto: InscribingHistoryDto): Promise<any> {
+    const newItem = await this.inscribingHistoryModel.create({
+      type: createItemDto.type,
+      status: createItemDto.status,
+      networkFee: createItemDto.networkFee,
+      paymentAddress: createItemDto.paymentAddress,
+      recipientAddress: createItemDto.recipientAddress,
+      createdAt: new Date()
+    })
+
+    return newItem;
   }
 }

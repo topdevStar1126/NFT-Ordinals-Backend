@@ -5,10 +5,8 @@ import { TokenSchema, TokenSchemaModel } from './token.schema';
 import { AccountSchema, AccountSchemaModel } from './account.schema';
 import { TransferSchema, TransferSchemaModel } from './transfer.schema';
 import { OperatorSchema, OperatorSchemaModel } from './operator.schema';
-import {
-  TokenTickerSchema,
-  TokenTickerSchemaModel,
-} from './tokenTicker.schema';
+import { InscribingHistorySchema, InscribingHistorySchemaModel } from './inscribingHistory.schema';
+import { TokenTickerSchema, TokenTickerSchemaModel } from './tokenTicker.schema';
 export {
   UserSchema,
   UserSchemaModel,
@@ -26,7 +24,9 @@ export {
   OperatorSchema,
   OperatorSchemaModel,
 
-  //Enthusiast K.G  2024-06-22 01:00 PM   EST
   TokenTickerSchema,
   TokenTickerSchemaModel,
+
+  InscribingHistorySchema,
+  InscribingHistorySchemaModel
 };

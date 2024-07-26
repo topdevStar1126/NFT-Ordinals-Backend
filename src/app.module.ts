@@ -11,13 +11,10 @@ import { TokensModule } from '@/tokens/tokens.module';
 // import { InscriptionModule } from '@/inscription/inscription.module';
 import { AccountsModule } from '@/accounts/accounts.module';
 import { TransfersModule } from '@/transfers/transfers.module';
-
-//Enthusiast K.G at 01:32 AM 15/13/2024 in JST
 import { Brc20TokensModule } from './brc20Tokens/brc20Tokens.module'; // Import the Brc20TokensModule
 import { InscBrc20TokensModule } from './inscribing/inscBrc20Tokens.module'; // Import the Brc20TokensModule
 import { UpdateServerDataModule } from './updateServerData/updateServerData.module';
 
-//Enthusiast KG. at 02:30 AM 
 import { createListingsModule } from './createListings/createListings.module';
 
 @Module({
@@ -36,7 +33,6 @@ import { createListingsModule } from './createListings/createListings.module';
     AccountsModule,
     TransfersModule,
 
-    //Enthusiast K.G
     Brc20TokensModule,
     InscBrc20TokensModule,
 
