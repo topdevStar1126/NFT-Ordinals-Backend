@@ -41,7 +41,7 @@ export class InscBrc20TokensController {
 
   @Get('/getTokenNames/:keyWord')
   async getTokenNames(@Param('keyWord') keyWord: string) {
-    return this.inscBrc20TokensService.getTokenNames(keyWord);
+    return await this.inscBrc20TokensService.getTokenNames(keyWord);
   }
 
   @Get('/getInscribingHistory/:recipientAddress')

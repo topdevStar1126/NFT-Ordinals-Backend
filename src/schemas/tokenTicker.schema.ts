@@ -11,6 +11,7 @@ export class TokenTickerSchemaModel {
 
   @Prop({ type: String })
   slug: string;
+  static schema: any;
 }
 
 export const TokenTickerSchema = SchemaFactory.createForClass(

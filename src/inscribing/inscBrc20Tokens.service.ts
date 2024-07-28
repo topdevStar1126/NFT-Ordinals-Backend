@@ -10,7 +10,7 @@ import { Injectable } from '@nestjs/common';
 import * as dotenv from 'dotenv';
 import * as session from 'express-session';
 import { InscBrc20TokenDetailDto } from './inscBrc20TokenDetail.dto';
-import { delay } from 'rxjs';
+import { delay, min } from 'rxjs';
 import { InscBrc20TokenDto } from './inscBrc20Token.dto';
 import { InscribingHistoryDto } from './inscribingHistory.dto';
 
@@ -197,8 +197,8 @@ export class InscBrc20TokensService {
 
   constructor(
     @InjectModel(TokenTickerSchemaModel.name)
-    @InjectModel(InscribingHistorySchemaModel.name)
     private readonly tokenTickerModel: Model<TokenTickerDocument>,
+    @InjectModel(InscribingHistorySchemaModel.name)
     private readonly inscribingHistoryModel: Model<InscribingHistoryDocument>
   ) {}
 
@@ -466,12 +466,20 @@ export class InscBrc20TokensService {
   async getTokenNames(keyWord: string): Promise<any> {
     const regex = new RegExp(keyWord, 'i');
 
+    let result = [];
     const tokenTickers = await this.tokenTickerModel
       .find({ slug: { $regex: regex } })
       .limit(20)
       .exec();
+    for(let i = 0; i < tokenTickers.length; i ++) {
+      let mintedRate = await this.getMintRateOfToken(tokenTickers[i].slug);
+      result.push({
+        slug: tokenTickers[i].slug,
+        mintedRate: mintedRate
+      })
+    }
 
-    return tokenTickers;
+    return result;
   }
 
   async getInscribingHistory(recipientAddress: string): Promise<any> {

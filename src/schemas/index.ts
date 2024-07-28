@@ -20,13 +20,10 @@ export {
   AccountSchemaModel,
   TransferSchema,
   TransferSchemaModel,
-
   OperatorSchema,
   OperatorSchemaModel,
-
   TokenTickerSchema,
   TokenTickerSchemaModel,
-
   InscribingHistorySchema,
   InscribingHistorySchemaModel
 };
