@@ -12,6 +12,7 @@ import {
   Req,
   UnauthorizedException,
   Logger,
+  Res,
 } from '@nestjs/common';
 import { CreateUserDto, UpdateUserDto } from './users.dto';
 import { UsersService } from './users.service';
@@ -42,6 +43,29 @@ export class UsersController {
     }
     const user = req.user;
     return this.usersService.findOne(user?.address.toLowerCase() ?? "", wallet.toLowerCase());
+  }
+
+  @Post('send-verification-email')
+  async sendVerificationEmail(@Body('email') email: string, @Res() res: Response) {
+    try {
+      await this.usersService.sendVerificationEmail(email);
+      return {success: true, data: 'Email sent.'}
+    } catch (error) {
+      return {success: false, data: 'Error'}
+    }
+  }
+
+  @Post('verify-code')
+  verifyCode(
+    @Body('email') email: string,
+    @Body('code') code: string,
+    @Res() res: Response,
+  ) {
+    if (this.usersService.verifyCode(email, code)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @Patch(':wallet')
