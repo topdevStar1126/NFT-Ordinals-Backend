@@ -10,19 +10,19 @@ import crypto from 'crypto'
 
 @Injectable()
 export class UsersService {
+  private readonly transporter;
+  private verificationCodes: Record<string, string> = {};
   constructor(
     @InjectModel(UserSchemaModel.name)
     private readonly userModel: Model<UserDocument>,
-    private readonly transporter,
-    private verificationCodes: Record<string, string> = {}
   ) {
-    this.transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'your-email@gmail.com',
-        pass: 'your-email-password',
-      },
-    });
+    // this.transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   auth: {
+    //     user: 'your-email@gmail.com',
+    //     pass: 'your-email-password',
+    //   },
+    // });
    }
 
   async create(createUserDto: CreateUserDto): Promise<User> {

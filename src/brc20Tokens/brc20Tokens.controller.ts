@@ -28,9 +28,12 @@ export class Brc20TokensController {
     return this.brc20TokensService.test();
   }
 
-  @Get('/getInscriptionData/:tokenSlug')
-  async getInscriptionData(@Param('tokenSlug') tokenSlug) {
-    return this.brc20TokensService.getInscriptionData(tokenSlug);
+  @Get('/getInscriptionData')
+  async getInscriptionData(
+    @Query('tokenSlug') tokenSlug: string,
+    @Query('page', ParseIntPipe) page: string
+  ) {
+    return this.brc20TokensService.getInscriptionData(tokenSlug, page);
   }
 
   // @Post()

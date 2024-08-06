@@ -318,11 +318,15 @@ export class Brc20TokensService {
     return resultData_new;
   }
 
-  async getInscriptionData(tokenSlug: string): Promise<any> {
+  async getInscriptionData(
+    tokenSlug: string,
+    page: string,
+  ): Promise<any> {
     let postRequestUrl = '/api/v5/mktplace/nft/ordinals/listings';
     let postRequestParams = {
-      slug: tokenSlug,
-      limit: 24
+       slug: tokenSlug,
+      // cursor: 'MTcxNzEyNjg2Njo0ODAwODE1NDM3',
+       limit: 24
     };
     const resultData = await sendPostRequest(
       postRequestUrl,
@@ -347,7 +351,6 @@ export class Brc20TokensService {
       inscArray.push({...eachIncription, ...inscriptionObjectForInscriptionNumber});
     }  
 
-    
     return inscArray;
   }
 
